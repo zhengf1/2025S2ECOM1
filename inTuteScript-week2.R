@@ -51,6 +51,7 @@ summary(dt)
 # install.packages("stargazer")
 library(stargazer) # make sure you have installed before load
 stargazer(dt, 
+          covariate.labels = c("State ID", "Violent crime rate", "Robbery rate", "Density", "Average Income"),
           summary.stat = c("n", "mean", "sd", "median", "min", "max"),  
           type="text", 
           title="Descriptive Statistics",
@@ -108,6 +109,13 @@ boxplot(dt$vio)
 # Median or 50th percentile (the middle point of a distribution)
 # 25th and 75th percentiles (intermediate low and high values of a distribution)
 # Min and Max value         (extreme low and high values of a distribution)
+
+mu_x = 1
+sig_x = 4
+Xs = rnorm(100000,mu_x,sig_x)
+Xs2 = rnorm(100000,2*mu_x,2*sig_x)
+plot(density(Xs))
+lines(density(Xs2),col='red')
 
 ############### Notes ############### 
 # this R.script is(will be) available on
