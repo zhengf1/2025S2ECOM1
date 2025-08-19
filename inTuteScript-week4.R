@@ -1,5 +1,5 @@
 #***************************************************************************** 
-#****** ECOM20001 Econometrics 1 Week 3
+#****** ECOM20001 Econometrics 1 Week 4
 #****** by Zheng Fan; fan.z@unimelb.edu.au
 #****** Contact me if you have any questions.
 #***************************************************************************** 
@@ -28,7 +28,7 @@ rm(list=ls())
 
 # to read data, we MUST set work directory to 
 # tell R the location of our data file.
-setwd("/Users/zhengfan/Dropbox/01 UoM-Teaching/2025-S2-Ecom1/ECOM1_Week3")
+setwd("/Users/zhengfan/Dropbox/01 UoM-Teaching/2025-S2-Ecom1/ECOM1_Week4")
 # yours should be different
 
 # ALTERNATIVELY WAY: 
