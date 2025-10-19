@@ -15,7 +15,7 @@
 #***************************************************************************** 
 #****** Admin:
 #***************************************************************************** 
-#****** Assignment 3 due on 20 May. (check Canvas for accuracy) 
+#****** Assignment 3 due on 20 Oct. (check Canvas for accuracy) 
 #***************************************************************************** 
 #***************************************************************************** 
 
@@ -164,6 +164,7 @@ stargazer(reg3, type="text",
 
 # please refer to Dave's R code for detailed explanations
 # it contains much more than the tutorial questions required
+
 
 
 
