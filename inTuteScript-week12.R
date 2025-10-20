@@ -197,7 +197,7 @@ se1=sqrt(diag(cov1))
 K1=2                             # Number of parameters in regression reg1
 ssr1=sum(residuals(reg1)^2)      # SSR from the regression reg1
 BIC1=log(ssr1/T)+K1*(log(T)/T)   # BIC from the regression reg1
-AIC1=log(ssr1/T)+K1*(log(2)/T)   # BIC from the regression reg1
+AIC1=log(ssr1/T)+K1*(2/T)   # BIC from the regression reg1
 
 # AR(1) model with search with seasonal dummies
 reg2=lm(search~search_lag1+sum+aut+win,data=mydata)
@@ -207,7 +207,7 @@ coeftest(reg2, vcov = vcovHC(reg2, "HC1"))
 K2=5                            
 ssr2=sum(residuals(reg2)^2)     
 BIC2=log(ssr2/T)+K2*(log(T)/T)
-AIC2=log(ssr2/T)+K2*(log(2)/T)
+AIC2=log(ssr2/T)+K2*(2/T)
 
 # AR(2) model with search with seasonal dummies
 reg3=lm(search~search_lag1+search_lag2+sum+aut+win,data=mydata)
@@ -216,7 +216,7 @@ se3=sqrt(diag(cov3))
 K3=6                          
 ssr3=sum(residuals(reg3)^2)     
 BIC3=log(ssr3/T)+K3*(log(T)/T)
-AIC3=log(ssr3/T)+K3*(log(2)/T)
+AIC3=log(ssr3/T)+K3*(2/T)
 
 
 # ESTIMATE ADL(p,q) MODELS
@@ -228,7 +228,7 @@ se4=sqrt(diag(cov4))
 K4=6                             
 ssr4=sum(residuals(reg4)^2)     
 BIC4=log(ssr4/T)+K4*(log(T)/T)
-AIC4=log(ssr4/T)+K4*(log(2)/T)
+AIC4=log(ssr4/T)+K4*(2/T)
 
 # ADL(1,2) model with search and price
 reg5=lm(search~search_lag1+price_lag1+price_lag2+sum+aut+win,data=mydata)
@@ -237,7 +237,7 @@ se5=sqrt(diag(cov5))
 K5=7                            
 ssr5=sum(residuals(reg5)^2)     
 BIC5=log(ssr5/T)+K5*(log(T)/T)
-AIC5=log(ssr5/T)+K5*(log(2)/T)
+AIC5=log(ssr5/T)+K5*(2/T)
 
 
 # E. ESTIMATE ADL(p,q1,q2) MODELS
@@ -249,7 +249,7 @@ se6=sqrt(diag(cov6))
 K6=9                           
 ssr6=sum(residuals(reg6)^2)     
 BIC6=log(ssr6/T)+K6*(log(T)/T)  
-AIC6=log(ssr6/T)+K6*(log(2)/T)  
+AIC6=log(ssr6/T)+K6*(2/T)  
 
 ## Regression output table
 # Discuss the results from stargazer() as asked in the question on the assignment sheet.
@@ -326,9 +326,13 @@ plot(mydata$week,mydata$search_fcast_in_error, type="l",col="green",
 # ------------------ Q7 ------------------
 # OUT-OF-SAMPLE FORECASTING
 #***************************************************************************** 
+# reg5=lm(search~search_lag1+price_lag1+price_lag2+sum+aut+win,data=mydata)
+# coeftest(reg5, vcov = vcovHC(reg5, "HC1"))
 
-## Data frame for the last observation in the sample of T=48 (defined on line 70) for generating a forfecast
-newdata1=data.frame(search_lag1=mydata$search_lag1[T],price_lag1=mydata$price_lag1[T],price_lag2=mydata$price_lag2[T],
+## Data frame for the last observation in the sample of T=48 for generating a forfecast
+newdata1=data.frame(search_lag1=mydata$search[T],
+                    price_lag1=mydata$price[T],
+                    price_lag2=mydata$price[T-1],
                     sum=mydata$sum[T],aut=mydata$aut[T],win=mydata$win[T])
 
 ## Use the predict() command to forecast out the next observation in period T+1 out of the sample
